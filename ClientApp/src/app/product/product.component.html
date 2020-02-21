@@ -1,0 +1,7 @@
+<p>product works!</p>
+<ul>
+  <li *ngFor="let item of products" (click)="mostraPreco(item)">{{item.name}}</li>
+</ul>
+<div>
+  <h3 *ngIf="item">{{item.preco}}€</h3>
+</div>
