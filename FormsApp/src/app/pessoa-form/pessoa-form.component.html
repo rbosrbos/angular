@@ -1,0 +1,30 @@
+<p>pessoa-form works!</p>
+<p>{{modelo.id}}</p>
+<p>{{modelo.nome}}</p>
+<p>{{modelo.saldo}}</p>
+<p>{{modelo.apelido}}</p>
+<p>{{spy.className}}</p>
+<div class="container">
+<h4>Ficha da Pessoa</h4>
+<form #pessoaForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" name="nome" id="nome" required [(ngModel)]="modelo.nome" #name="ngModel">
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Nome Invalido</div>
+  </div>
+  <div class="form-group">
+    <label for="saldo">Saldo</label>
+    <input type="number" class="form-control" name="saldo" id="saldo" required [(ngModel)]="modelo.saldo" #saldo="ngModel">
+    <div [hidden]="saldo.valid || saldo.pristine" class="alert alert-danger">Saldo Invalido</div>
+  </div>
+  <div class="form-group">
+    <label for="apelido">Apelido</label>
+    <select name="apelido" id="apelido" class="form-control" [(ngModel)]="modelo.apelido" #spy>
+      <option *ngFor="let item of apelidos">{{item}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="button" class="btn btn-default" (click)="newPessoa()">Nova Pessoa</button>
+
+</form>
+</div>
